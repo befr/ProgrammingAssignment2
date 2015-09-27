@@ -19,12 +19,12 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## Write a short comment describing this function
-## cacheSolve uses corpcor, a library that avoids determinants and uses orthogonal descomposition
+## cacheSolve uses corpcor, a library that avoids determinants and uses orthogonal descomposition, to get the inverse matrix
 ## note: this function will try to load corpcor library and if it's not installed will try to install the library
 
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+	##install corpcor library
         if(require("corpcor")){
 	        print("corpcor is loaded correctly")
 	        } 
@@ -38,6 +38,8 @@ cacheSolve <- function(x, ...) {
 			        stop("could not install corpcor")
 			        }
 		}
+		
+	 ## Return a matrix that is the inverse of 'x'
         inverse <- X$getinverse()
         if(!is.null(inverse)){
 	        message("matrix is in memory")
